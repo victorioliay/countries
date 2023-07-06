@@ -5,8 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-const countryModel = require("../src/models/Country");
-const activityModel = require("../src/models/Activity");
+const countryModel = require("./models/Country");
+const activityModel = require("./models/Activity");
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`,

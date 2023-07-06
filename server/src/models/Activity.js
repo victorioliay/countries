@@ -5,7 +5,8 @@ module.exports = (sequelize) => {
     "Activity",
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         allowNull: false,
       },
@@ -16,12 +17,16 @@ module.exports = (sequelize) => {
       difficulty: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          min: 1,
+          max: 5,
+        },
       },
       duration: {
         type: DataTypes.TIME,
       },
       season: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM("Summer", "Autumn", "Winter", "Spring"),
       },
     },
     { timestamps: false }
